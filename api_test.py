@@ -7,7 +7,7 @@ from make_requests import make_request
 class TestClass:
     def test_search_asteroids_with_sucess(self):
         # Arrange:
-        query_parameters = "api_key=DEMO_KEY"
+        query_parameters = "api_key=4oHMkn6CWYCvBFcX5GWusj5pNGgLFTY1LiWgg2n5"
         # Act:
         response = make_request(query_parameters)
         # Assertion:
@@ -27,7 +27,7 @@ class TestClass:
 
     def test_search_asteroids_with_start_date(self):
         # Arrange:
-        query_parameters = "api_key=DEMO_KEY&start_date=2023-11-10"
+        query_parameters = "api_key=4oHMkn6CWYCvBFcX5GWusj5pNGgLFTY1LiWgg2n5&start_date=2023-11-10"
         # Act:
         response = make_request(query_parameters)
         # Assertion:
@@ -38,7 +38,7 @@ class TestClass:
 
     def test_search_asteroids_with_end_date(self):
         # Arrange:
-        query_parameters = "api_key=DEMO_KEY&end_date=2023-11-10"
+        query_parameters = "api_key=4oHMkn6CWYCvBFcX5GWusj5pNGgLFTY1LiWgg2n5&end_date=2023-11-10"
         # Act:
         response = make_request(query_parameters)
         # Assertion:
@@ -46,7 +46,7 @@ class TestClass:
 
     def test_search_asteroids_in_valid_range(self):
         # Arrange:
-        query_parameters = "api_key=DEMO_KEY&start_date=2023-11-09&end_date=2023-11-10"
+        query_parameters = "api_key=4oHMkn6CWYCvBFcX5GWusj5pNGgLFTY1LiWgg2n5&start_date=2023-11-09&end_date=2023-11-10"
         # Act:
         response = make_request(query_parameters)
         # Assertion:
@@ -54,7 +54,7 @@ class TestClass:
 
     def test_search_asteroids_in_invalid_range(self):
         # Arrange:
-        query_parameters = "api_key=DEMO_KEY&start_date=2023-11-19&end_date=2023-11-10"
+        query_parameters = "api_key=4oHMkn6CWYCvBFcX5GWusj5pNGgLFTY1LiWgg2n5&start_date=2023-11-19&end_date=2023-11-10"
         # Act:
         response = make_request(query_parameters)
         # Assertion:
