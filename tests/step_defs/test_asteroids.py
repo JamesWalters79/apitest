@@ -1,6 +1,8 @@
 import pytest
 from pytest_bdd import scenarios, scenario, given, when, then, parsers
-from make_requests import make_request
+from make_requests import make_request_feed
+from make_requests import make_request_browse
+from make_requests import make_request_lookup
 
 # Constants
 ASTEROIDS_API_KEY = "4oHMkn6CWYCvBFcX5GWusj5pNGgLFTY1LiWgg2n5"
@@ -10,29 +12,39 @@ INVALID_ASTEROIDS_API_KEY = "1234"
 scenarios("../features/asteroids.feature")
 
 # Given Steps
+@given(parsers.parse('the Asteroids API is asked for an asteroid with id "{asteroid_id}"'), target_fixture='asteroids_response')
+def asteroids_response(asteroid_id):
+    response = make_request_lookup(asteroid_id,"api_key=" + ASTEROIDS_API_KEY)
+    return response
+
+@given("the Asteroids API is browsed", target_fixture='asteroids_response')
+def asteroids_response():
+    response = make_request_browse("api_key=" + ASTEROIDS_API_KEY)
+    return response
+
 @given("the Asteroids API is queried with no search parameters", target_fixture='asteroids_response')
 def asteroids_response():
-    response = make_request("api_key=" + ASTEROIDS_API_KEY)
+    response = make_request_feed("api_key=" + ASTEROIDS_API_KEY)
     return response
 
 @given(parsers.parse('the Asteroids API is queried with start date "{start_date}"'), target_fixture='asteroids_response')
 def asteroids_response_start_date(start_date):
-    response = make_request("api_key=" + ASTEROIDS_API_KEY + "&start_date=" + start_date)
+    response = make_request_feed("api_key=" + ASTEROIDS_API_KEY + "&start_date=" + start_date)
     return response  
 
 @given(parsers.parse('the Asteroids API is queried with end date "{end_date}"'), target_fixture='asteroids_response')
 def asteroids_response_end_date(end_date):
-    response = make_request("api_key=" + ASTEROIDS_API_KEY + "&end_date=" + end_date)
+    response = make_request_feed("api_key=" + ASTEROIDS_API_KEY + "&end_date=" + end_date)
     return response 
 
 @given(parsers.parse('the Asteroids API is queried with start date "{start_date}" and end date "{end_date}"'), target_fixture='asteroids_response')
 def asteroids_response_date_range(start_date, end_date):
-    response = make_request("api_key=" + ASTEROIDS_API_KEY + "&start_date=" + start_date + "&end_date=" + end_date)
+    response = make_request_feed("api_key=" + ASTEROIDS_API_KEY + "&start_date=" + start_date + "&end_date=" + end_date)
     return response 
 
 @given("the Asteroids API is queried with an invalid token", target_fixture='asteroids_response')
 def asteroids_response_invalid_token():
-    response = make_request("api_key=" + INVALID_ASTEROIDS_API_KEY)
+    response = make_request_feed("api_key=" + INVALID_ASTEROIDS_API_KEY)
     return response
 
 # Then Steps

@@ -41,3 +41,13 @@ Scenario: Asteroids API Query with invalid token
     Then the response status code is "403"
     And the error code is "API_KEY_INVALID"
     And the error message is "An invalid api_key was supplied. Get one at https://api.nasa.gov:443"
+
+@bdd @neo_browse
+Scenario: Asteroids API browse
+    Given the Asteroids API is browsed
+    Then the response status code is "200"
+
+@bdd @neo_lookup
+Scenario: Asteroids API lookup by ID
+    Given the Asteroids API is asked for an asteroid with id "3542519"
+    Then the response status code is "200"

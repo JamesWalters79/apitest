@@ -2,14 +2,14 @@
 import pytest
 import datetime
 
-from make_requests import make_request
+from make_requests import make_request_feed
 
 class TestClass:
     def test_search_asteroids_with_sucess(self):
         # Arrange:
         query_parameters = "api_key=4oHMkn6CWYCvBFcX5GWusj5pNGgLFTY1LiWgg2n5"
         # Act:
-        response = make_request(query_parameters)
+        response = make_request_feed(query_parameters)
         # Assertion:
         assert response.status_code == 200  # Validation of status code
         data = response.json()
@@ -21,7 +21,7 @@ class TestClass:
         # Arrange:
         query_parameters = ""
         # Act:
-        response = make_request(query_parameters)
+        response = make_request_feed(query_parameters)
         # Assertion:
         assert response.status_code == 403
 
@@ -29,7 +29,7 @@ class TestClass:
         # Arrange:
         query_parameters = "api_key=4oHMkn6CWYCvBFcX5GWusj5pNGgLFTY1LiWgg2n5&start_date=2023-11-10"
         # Act:
-        response = make_request(query_parameters)
+        response = make_request_feed(query_parameters)
         # Assertion:
         assert response.status_code == 200
         data = response.json()
@@ -40,7 +40,7 @@ class TestClass:
         # Arrange:
         query_parameters = "api_key=4oHMkn6CWYCvBFcX5GWusj5pNGgLFTY1LiWgg2n5&end_date=2023-11-10"
         # Act:
-        response = make_request(query_parameters)
+        response = make_request_feed(query_parameters)
         # Assertion:
         assert response.status_code == 400
 
@@ -48,7 +48,7 @@ class TestClass:
         # Arrange:
         query_parameters = "api_key=4oHMkn6CWYCvBFcX5GWusj5pNGgLFTY1LiWgg2n5&start_date=2023-11-09&end_date=2023-11-10"
         # Act:
-        response = make_request(query_parameters)
+        response = make_request_feed(query_parameters)
         # Assertion:
         assert response.status_code == 200
 
@@ -56,7 +56,7 @@ class TestClass:
         # Arrange:
         query_parameters = "api_key=4oHMkn6CWYCvBFcX5GWusj5pNGgLFTY1LiWgg2n5&start_date=2023-11-19&end_date=2023-11-10"
         # Act:
-        response = make_request(query_parameters)
+        response = make_request_feed(query_parameters)
         # Assertion:
         assert response.status_code == 400
 
@@ -64,6 +64,6 @@ class TestClass:
         # Arrange:
         query_parameters = "api_key=INVALID_TOKEN"
         # Act:
-        response = make_request(query_parameters)
+        response = make_request_feed(query_parameters)
         # Assertion:
         assert response.status_code == 403
