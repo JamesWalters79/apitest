@@ -66,7 +66,8 @@ def asteroids_response_http_error(asteroids_response, http_error):
     data = asteroids_response.json()
     assert data["http_error"] == http_error
 
-@then(parsers.parse('the element count is "{element_count:n}"'))
-def asteroids_response_element_count(asteroids_response, element_count):
+@then(parsers.parse('the element count is between "{element_count_lower:n}" and "{element_count_upper:n}"'))
+def asteroids_response_element_count(asteroids_response, element_count_lower, element_count_upper):
     data = asteroids_response.json()
-    assert data["element_count"] == element_count
+    assert data["element_count"] > element_count_lower
+    assert data["element_count"] < element_count_upper

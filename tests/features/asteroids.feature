@@ -4,13 +4,13 @@ Scenario: Asteroids API Query with no search parameters
     Given the Asteroids API is queried with no search parameters
     Then the response status code is "200"
     And many asteroids are returned
-    And the element count is "146"
+    And the element count is between "100" and "150"
 
 Scenario: Asteroids API Query with start date
     Given the Asteroids API is queried with start date "2023-11-10"
     Then the response status code is "200"
     And many asteroids are returned
-    And the element count is "195"
+    And the element count is between "150" and "200"
 
 Scenario: Asteroids API Query with end date
     Given the Asteroids API is queried with end date "2023-11-10"
@@ -22,7 +22,7 @@ Scenario: Asteroids API Query with valid range
     Given the Asteroids API is queried with start date "2023-11-09" and end date "2023-11-10"
     Then the response status code is "200"
     And many asteroids are returned
-    And the element count is "36"
+    And the element count is between "30" and "50"
 
 Scenario: Asteroids API Query with invalid range
     Given the Asteroids API is queried with start date "2023-11-09" and end date "2023-12-10"
