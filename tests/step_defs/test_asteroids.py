@@ -81,7 +81,7 @@ def asteroids_response_error_message(asteroids_response, message):
 def asteroids_response_http_error_message(asteroids_response, http_error_message):
     data = asteroids_response.json()
     assert data["error_message"] == http_error_message
-    allure.attach("% s" % datadata["error_message"],name="JSON Error Message", attachment_type=allure.attachment_type.JSON)
+    allure.attach("% s" % data["error_message"],name="JSON Error Message", attachment_type=allure.attachment_type.JSON)
 
 @then(parsers.parse('the http error is "{http_error}"'))
 def asteroids_response_http_error(asteroids_response, http_error):
