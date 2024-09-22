@@ -5,3 +5,4 @@
 /__pycache__
 /tests/step_defs/__pycache__
 /allure-bdd-results
+/allure-report
