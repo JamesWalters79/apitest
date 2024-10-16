@@ -1,3 +1,7 @@
+# Introduction
+
+A small set of BDD style tests implemented in Python using pytest and pytest-bdd that test implement a number of test scenarios for the asteroids search endpoint (Asteroids - NeoWs) provided by NASA at https://api.nasa.gov/ 
+
 # Running Tests 
 
 **Create allure report for unit-tests (using allure-pytest plugin)**
